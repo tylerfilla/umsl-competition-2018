@@ -47,14 +47,19 @@ int main(int argc, char* argv[])
     int mx_w = 0;
     int my_w = 0;
 
-    while (in.good())
+    std::string str;
+    while (std::getline(in, str))
     {
-        std::string str;
-        in >> str;
+        empty = false;
+        if (str.length() > 80)
+        {
+            std::cout << "ERROR";
+            return 1;
+        }
 
         for (int i = 0; i < str.length(); ++i)
         {
-            empty = false;
+            //empty = false;
             switch (str[i])
             {
             case 'N':
@@ -69,6 +74,9 @@ int main(int argc, char* argv[])
             case 'W':
                 mx--;
                 break;
+            default:
+                std::cout << "ERROR";
+                return 1;
             }
 
             if (mx > mx_e)
@@ -108,7 +116,6 @@ int main(int argc, char* argv[])
     std::cout << "(" << mx_e << "," << my_e << ")";
     std::cout << "(" << mx_s << "," << my_s << ")";
     std::cout << "(" << mx_w << "," << my_w << ")";
-    //std::cout << "\n";
 
     return 0;
 }

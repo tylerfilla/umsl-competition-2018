@@ -45,6 +45,7 @@ static char chfor(int num)
 
 static void sub(std::string& str, int A, int B, int C)
 {
+//    std::cout << "subbing " << str << " with A=" << A << ", B=" << B << ", C=" << C << "\n";
     for (int i = 0; i < str.length(); ++i)
     {
         switch (str[i])
@@ -77,25 +78,36 @@ static bool test(std::string s1, std::string s2, std::string s3, int A, int B, i
     return (n1 + n2) == n3;
 }
 
+static int run(std::string& s1, std::string& s2, std::string& s3, int M)
+{
+    for (int A = 0; A < M; ++A)
+    {
+        for (int B = 0; B < M; ++B)
+        {
+            for (int C = 0; C < M; ++C)
+            {
+                if (test(s1, s2, s3, A, B, C))
+                {
+                    std::cout << A << " " << B << " " << C;// << "\n";
+                    return 0;
+                }
+            }
+        }
+    }
+
+    return 1;
+}
+
 int main(int argc, char* argv[])
 {
     std::string s1(argv[1]);
     std::string s2(argv[2]);
     std::string s3(argv[3]);
 
-    for (int A = 0; A < INT_MAX; ++A)
+    for (int M = 0; M < INT_MAX; ++M)
     {
-        for (int B = 0; B < INT_MAX; ++B)
-        {
-            for (int C = 0; C < INT_MAX; ++C)
-            {
-                if (test(s1, s2, s3, A, B, C))
-                {
-                    std::cout << A << " " << B << " " << C << "\n";
-                    return 0;
-                }
-            }
-        }
+        if (run(s1, s2, s3, M) == 0)
+            break;
     }
 
     return 0;
