@@ -1,4 +1,4 @@
-## UMSL Open Programming Competition 2018
+# UMSL Open Programming Competition 2018
 
 http://www.cs.umsl.edu/~janikow/competitions/2018/OPC18Competition.pdf ([archive](https://web.archive.org/web/20220129085305/http://www.cs.umsl.edu/~janikow/competitions/2018/OPC18Competition.pdf))
 
